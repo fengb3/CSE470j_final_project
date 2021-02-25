@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="FinalProject.View.PlanPage"
+             Title="Plan">
+    <ContentPage.Content>
+        <Grid Padding="0,0,0,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+                <Frame 
+                    Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="4">
+                <ListView x:Name="PlanList" ItemTapped="PlanList_ItemTapped" IsGroupingEnabled="True" RowHeight="50" SeparatorVisibility="None" SelectionMode="None">
+                    <ListView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid RowDefinitions="40" ColumnDefinitions="40, Auto, Auto">
+
+                                    <BoxView Color="Bisque" CornerRadius="90" BackgroundColor="Transparent"
+                                             Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding GetMonth}" FontAttributes="Bold" FontSize="20"
+                                           Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding WeekOfMonth}" 
+                                           Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                    <Label Grid.Column="2"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.GroupHeaderTemplate>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnDefinitions="40, *">
+
+                                    <BoxView Grid.Column="0" WidthRequest="5" Color="Silver" HeightRequest="50" Margin="20,0,19,0" />
+
+                                    <pv:PancakeView Grid.Column="1" CornerRadius="10" Margin="4,0,0,5">
+                                        <Grid ColumnDefinitions="*,Auto,30,Auto">
+                                            <Label Text="{Binding GetWeek}"
+                                                   Grid.Column="0"
+                                                   VerticalOptions="Center"/>
+                                            <Label Text="{Binding Count}"
+                                                   Grid.Column="2"
+                                                    VerticalOptions="Center"/>
+                                            <Label Text="Exercise(s)"
+                                                   Grid.Column="3"
+                                                    VerticalOptions="Center"/>
+                                        </Grid>
+                                    </pv:PancakeView>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+                </Frame>
+
+                <Frame
+                    Grid.Row="4" Grid.Column="3"
+                    BackgroundColor="Transparent">
+                    <Button x:Name="AddBtn" ImageSource="add.png" CornerRadius="90" Clicked="AddBtn_Clicked"/>
+                </Frame>
+                
+            </Grid>
+            
+
+    </ContentPage.Content>
+</ContentPage>

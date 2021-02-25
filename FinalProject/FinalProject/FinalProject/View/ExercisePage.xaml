@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FinalProject.View.ExercisePage"
+             Title="Exercise">
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <StackLayout Orientation="Horizontal" BackgroundColor="LightBlue" Padding="0,0,0,0" HeightRequest="60">
+                <Grid HorizontalOptions="CenterAndExpand">
+                    <Picker x:Name="CataLog"
+                            Title="Catalog"
+                            WidthRequest="150"
+                            Grid.Column="0" Grid.Row="0"
+                            SelectedIndexChanged="SelectedIndexChanged"/>
+                    <Picker x:Name="Equipment" 
+                            Title="Equipment"
+                            WidthRequest="150"
+                            Grid.Column="1" Grid.Row="0"
+                            SelectedIndexChanged="SelectedIndexChanged"/>
+                    <Picker x:Name="Mechanics" 
+                            Title="Mechanics"
+                            WidthRequest="150"
+                            Grid.Column="2" Grid.Row="0"
+                            SelectedIndexChanged="SelectedIndexChanged"/>                    
+                </Grid>
+
+            </StackLayout>
+            
+            
+            <ListView x:Name="ExerciseList" SelectionMode="None" ItemTapped="ExerciseList_ItemTapped"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

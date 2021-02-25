@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="FinalProject.View.AddPlanPage">
+    <StackLayout>
+        <DatePicker x:Name="SelectedDate"/>
+        <pv:PancakeView CornerRadius="10" MinimumHeightRequest="200">
+            <Expander x:Name="exder">
+                <Expander.Header>
+                    <Grid>
+                        <Grid HorizontalOptions="CenterAndExpand">
+                            <Picker x:Name="CataLog"
+                            Title="Catalog"
+                            WidthRequest="150"
+                            Grid.Column="0" Grid.Row="0"
+                            SelectedIndexChanged="SelectedIndexChanged"
+                            Focused="CataLog_Focused"/>
+                            <Picker x:Name="Equipment" 
+                            Title="Equipment"
+                            WidthRequest="150"
+                            Grid.Column="1" Grid.Row="0"
+                            SelectedIndexChanged="SelectedIndexChanged"/>
+                            <Picker x:Name="Mechanics" 
+                            Title="Mechanics"
+                            WidthRequest="150"
+                            Grid.Column="2" Grid.Row="0"
+                            SelectedIndexChanged="SelectedIndexChanged"/>
+                        </Grid>
+                    </Grid>
+                </Expander.Header>
+                <Expander.Content>
+                    <StackLayout HeightRequest="200">
+                        <ListView x:Name="ExerciseList" SelectionMode="None" ItemTapped="ExerciseList_ItemTapped"/>
+                    </StackLayout>
+                </Expander.Content>
+            </Expander>
+        </pv:PancakeView>
+        
+        <pv:PancakeView>
+            <ListView x:Name="SelectedExercise" RowHeight="100">
+                <ListView.Header>
+                    <Grid>
+                        <Label Grid.Column="0" Grid.Row="0" Text="Name" />
+                        <Label Grid.Column="1" Grid.Row="0" Text="Reps"/>
+                        <Label Grid.Column="2" Grid.Row="0" Text="Groups"/>
+                        <Label Grid.Column="3" Grid.Row="0" Text="Weight" x:Name="wLabel"/>
+                        <Label Grid.Column="4" Grid.Row="0" Text=""/>
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <pv:PancakeView CornerRadius="10" HeightRequest="500" BackgroundGradientStartColor="AliceBlue" BackgroundGradientEndColor="Aqua">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Grid.Row="0" Text="{Binding GetExerciseName}" VerticalOptions="Center"/>
+                                    <Entry Grid.Column="1" Grid.Row="0" Text="{Binding GetReps}" Unfocused="Reps_Entry_TextChanged" Keyboard="Numeric"/>
+                                    <Entry Grid.Column="2" Grid.Row="0" Text="{Binding Groups}" Unfocused="Groups_Entry_Unfocused" Keyboard="Numeric"/>
+                                    <Entry Grid.Column="3" Grid.Row="0" Text="{Binding GetWeight}" Unfocused="Weight_Entry_TextChanged" Keyboard="Numeric"/>
+                                    <Button Grid.Column="4" Grid.Row="0" Text="×" CornerRadius="10" Scale="0.3" FontSize="50" Clicked="X_Clicked"/>
+                                </Grid>
+                            </pv:PancakeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </pv:PancakeView>
+        <Button x:Name="SaveButton" Text="Save" BackgroundColor="PaleVioletRed" Clicked="SaveButton_Clicked"/>
+    </StackLayout>
+</ContentPage>

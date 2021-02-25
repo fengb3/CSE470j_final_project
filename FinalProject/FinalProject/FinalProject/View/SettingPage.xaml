@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             mc:Ignorable="d"
+             x:Class="FinalProject.View.SettingPage"
+             Title="Setting">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <!--settings-->
+                <pv:PancakeView>
+                    <Grid>
+                        <Label Text="Units" x:Name="Units" 
+                               Grid.Column="0"/>
+                        <!--false : LB, true : KG-->
+                        <Switch x:Name="UnitsSetting" Toggled="UnitsSetting_Toggled" HorizontalOptions="End"
+                                Grid.Column="1"/>
+                    </Grid>
+                </pv:PancakeView>
+                <Grid RowDefinitions="Auto" ColumnDefinitions="*" VerticalOptions="Center">
+                    <skia:SKCanvasView x:Name="Planedview"
+                                       PaintSurface="Planedview_PaintSurface"
+                                       HeightRequest="500"
+                                       WidthRequest="160"
+                                       Grid.Column="0" Grid.Row="0"
+                                       BackgroundColor="Transparent"/>  
+                    
+                    <skia:SKCanvasView x:Name="Doneview"
+                                       PaintSurface="Doneview_PaintSurface"
+                                       HeightRequest="300"
+                                       WidthRequest="160"
+                                       Grid.Column="0" Grid.Row="0"
+                                       BackgroundColor="Transparent"/>
+
+                </Grid>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
